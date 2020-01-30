@@ -1,0 +1,19 @@
+body {
+    background-color: grey;
+}
+
+.banner {
+    width: 100%;
+    text-align: center;
+}
+
+.text {
+    color: white;
+    text-align: left;
+}
+
+div {
+    padding: 10px;
+    border: 5px solid black;
+}
+

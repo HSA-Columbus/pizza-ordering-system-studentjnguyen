@@ -1,10 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Mikes Pizza</title>
 </head>
 <body>
+<div>
+    <img src="../pizzabanner.jpg" alt="PizzaFire" class="banner">
+</div><br>
+<div>
+    <h1 style="text-align: center" class="text">Pizza Ordering System</h1>
+</div><br>
+<div>
+        <form class="text">
+        Name and Surname: <label>
+        <input name="name" type="text" required>
+    </label><br>
+        Address: <label>
+        <input name="address" type="text" required>
+    </label><br>
+        <p>Pizza Types:</p>
+        Sicilian <label>
+            <input name="Sicilian" type="checkbox">
+                <img src="Sicilian.jpg" alt="Sicilian">
+        </label>
+        Marine <label>
+        <input name="Marine" type="checkbox">
+            <img src="Marine.jpg" alt="Marine">
+    </label>
+        Mixed <label>
+        <input name="Mixed" type="checkbox">
+            <img src="Mixed.jpg" alt="Mixed">
+    </label>
+        Napoliten <label>
+        <input name="Napoliten" type="checkbox">
+            <img src="Napoliten.jpg" alt="Napoliten">
+    </label>
+        <p>Additional Toppings:</p>
+        Green Pepper <label>
+            <input name="GreenPepper" type="checkbox">
+        </label>
+        Tomato <label>
+            <input name="Tomato" type="checkbox">
+        </label>
+        Banana Peppers <label>
+            <input name="BananaPepper" type="checkbox">
+        </label>
+        Mushroom <label>
+            <input name="Mushroom" type="checkbox">
+        </label>
+        Olive <label>
+            <input name="Olive" type="checkbox">
+        </label>
+</form>
+</div>
 
 </body>
 </html>
