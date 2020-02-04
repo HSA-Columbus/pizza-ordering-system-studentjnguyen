@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Mikes Pizza</title>
+        <style>
+    table {
+        border-collapse: collapse;
+        width: 100%
+    }
+        td, th{
+            border: 1px solid #000000;
+            text-align: left;
+            padding: 8px;
+        }
+    tr:nth-child(even){
+        background-color: #aae0f7;
+    }
+</style>
+</head>
+<body>
+<img src="../pizzabanner.jpg" alt="PizzaFire" class="banner">
+    <p><a href="/">back to our menu</a></p>
+<div>
+    <h1 style="text-align: center" class="text">Your Cart</h1>
+
+</div><br>
+<table>
+    <tr>
+        <th>Items</th>
+        <th>Total Prices</th>
+    </tr>
+    {%for i in orders_made%}
+    <tr>
+        {% for x in i %}
+        <th>{{x}}</th>
+        {% endfor %}}
+    </tr>
+    {% endfor %}
+</table>
+<form>
+    <input type="submit" name="jeremiah" value="Place order">
+</form>
+</body>
+</html>
