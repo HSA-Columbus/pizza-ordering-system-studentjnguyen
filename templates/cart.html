@@ -10,13 +10,16 @@
         width: 100%
     }
         td, th{
-            border: 1px solid #000000;
-            text-align: left;
+            border: 2px solid white;
+            text-align: center;
             padding: 8px;
         }
     tr:nth-child(even){
-        background-color: #aae0f7;
+        background-color: whitesmoke;
     }
+            tr:nth-child(odd){
+                background-color: ghostwhite;
+            }
 </style>
 </head>
 <body>
@@ -27,20 +30,25 @@
 
 </div><br>
 <table>
-    <tr>
-        <th>Items</th>
+    <tr style="color: black">
+        <th style="color: black">Items</th>
         <th>Total Prices</th>
     </tr>
     {%for i in orders_made%}
-    <tr>
+    <tr style="color: black">
         {% for x in i %}
-        <th>{{x}}</th>
-        {% endfor %}}
+        <th style="color: black">$ {{x}}</th>
+        {% endfor %}
     </tr>
     {% endfor %}
+    <tr>
+        <th style="color: black">Total Price:</th>
+        <th style="color: black">$ {{total_price1}}</th>
+    </tr>
 </table>
-<form>
-    <input type="submit" name="jeremiah" value="Place order">
+<form action="cart.html" method="get">
+    <input name="submit_button" type="submit" value="Delete Order" style="width: 100%; height: 50px; color: red">
+    <input name="submit_button" type="submit" value="Place order" style="width: 100%; height: 50px; color: red">
 </form>
 </body>
 </html>

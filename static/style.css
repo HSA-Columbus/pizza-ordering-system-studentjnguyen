@@ -28,4 +28,10 @@ div {
 .specials {
 }
 
+table {
+    color: whitesmoke;
+}
 
+.darktext {
+    color: black;
+}
