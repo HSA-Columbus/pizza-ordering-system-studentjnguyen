@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <img src="../pizzabanner.jpg" alt="PizzaFire" class="banner">
+    <img src="../static/pizzabanner.jpg" alt="PizzaFire" class="banner">
 <div>
     <h1 style="text-align: center" class="text">Pizza Ordering System</h1>
 
@@ -17,7 +17,7 @@
         <button style="width: 100%; height: 50px"><a href="/cart">View Your Cart</a></button>
     </div><br>
 <div>
-        <form class="text">
+        <form class="text" action="/" method="post">
             <h2>Enter your information: </h2>
         Name and Surname: <label class="pizza">
         <input name="name" type="text" required>
@@ -25,28 +25,28 @@
         Address: <label class="pizza">
         <input name="address" type="text" required>
     </label><br>
-            <input type="submit" value="Submit">
+            <input name="submit_button" type="submit" value="Submit">
             </form>
     <form class="text" action="/" method="post">
         <input type="hidden" value="" id="pizza_type">
             <h2>Pizzas: </h2>
-            <img src="../Sicilian.jpg" alt="Sicilian" align="center">
+            <img src="../static/Sicilian.jpg" alt="Sicilian" align="center">
             Sicilian 11.99$<label class="pizza">
             <input name="submit_button" type="submit" value="Add Sicilian" style="background-color:red;color:white;">
         </label>
             <br clear="left"/>
 
-            <img src="../Marine.jpg" alt="Marine" align="center">
+            <img src="../static/Marine.jpg" alt="Marine" align="center">
             Marine 11.99$<label class="pizza">
         <input name="submit_button" type="submit" value="Add Marine" style="background-color:red;color:white;">
     </label>
             <br clear="left"/>
-            <img src="../Mixed.jpg" alt="Mixed" align="center">
+            <img src="../static/Mixed.jpg" alt="Mixed" align="center">
             Mixed 11.99$<label class="pizza">
         <input name="submit_button" type="submit" value="Add Mixed" style="background-color:red;color:white;">
     </label>
             <br clear="left"/>
-            <img src="../Napoliten.jpg" alt="Napoliten" align="center">
+            <img src="../static/Napoliten.jpg" alt="Napoliten" align="center">
             Napoliten 11.99$<label class="pizza">
         <input name="submit_button" type="submit" value="Add Napoliten" style="background-color:red;color:white;">
     </label>
@@ -54,36 +54,36 @@
         <h2>Additional Toppings: </h2>
             <p>(1.00$ for each additional topping)</p>
         Green Pepper <label class="toppings">
-            <input name="GreenPepper" type="checkbox">
+            <input name="submit_button" value="Add Green Pepper" type="submit" style="background-color:red;color:white;">
         </label>
             <br/>
         Tomato <label class="toppings">
-            <input name="Tomato" type="checkbox">
+            <input name="submit_button" value="Add Tomato" type="submit" style="background-color:red;color:white;">
         </label>
             <br clear="left"/>
         Banana Peppers <label class="toppings">
-            <input name="BananaPepper" type="checkbox">
+            <input name="submit_button" value="Add Banana Pepper" type="submit" style="background-color:red;color:white;">
         </label>
             <br clear="left"/>
         Mushroom <label class="toppings">
-            <input name="Mushroom" type="checkbox">
+            <input name="submit_button" value="Add Mushroom" type="submit" style="background-color:red;color:white;">
         </label>
             <br clear="left"/>
         Olive <label class="toppings">
-            <input name="Olive" type="checkbox">
+            <input name="submit_button" value="Add Olive" type="submit" style="background-color:red;color:white;">
         </label>
             <h2>Specials: </h2>
-            <img src="../HotDog.jpg" alt="HotDog" align="center">
+            <img src="../static/HotDog.jpg" alt="HotDog" align="center">
             Hot Dog 4.99$<label class="specials">
             <input name="submit_button" type="submit" value="Add Hot Dog" style="background-color:red;color:white;">
         </label>
             <br clear="left"/>
-            <img src="../meatballsub.jpg" alt="MeatballDog" align="center">
+            <img src="../static/meatballsub.jpg" alt="MeatballDog" align="center">
         Meatball Dog 5.99$<label class="specials">
             <input name="submit_button" type="submit" value="Add Meatball Dog" style="background-color:red;color:white;">
         </label>
             <br clear="left"/>
-            <img src="../waterdog.png" alt="WaterDog" align="center">
+            <img src="../static/waterdog.png" alt="WaterDog" align="center">
             Water Dog 0.99$<label class="specials">
             <input name="submit_button" type="submit" value="Add Water Dog" style="background-color:red;color:white;">
         </label>
