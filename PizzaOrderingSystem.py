@@ -1,6 +1,8 @@
 from flask import *
 import sqlite3
 import random
+import pdfkit
+
 
 application = Flask(__name__)
 
@@ -40,7 +42,7 @@ def home():
                 conn.execute(command, data_list)
                 conn.commit()
             if request.form['submit_button'] == 'Add Napoliten':
-                data_list.append('Napoliten')
+                data_list.append('Neapolitan')
                 data_list.append(11.99)
                 data_list.append(customer_id)
                 conn.execute(command, data_list)
@@ -111,14 +113,18 @@ def cart():
                 total = total+items[1]
                 totals = round(total, 2)
                 print(totals)
+                totals += 2.00
                 total_price1 = totals
-            return render_template('cart.html', orders_made=orders_made, total_price1=total_price1, address_made=address_made)
+            return render_template('cart.html', orders_made=orders_made, total_price1=total_price1, address_made=address_made, customer_id=customer_id)
     except:
         return render_template('401.html')
 
 
 @application.route('/orderplaced', methods=['GET', 'POST'])
 def orderplaced():
+    # if request.method == "POST":
+    #     if request.form['print'] == 'Send Receipt':
+    #
     return render_template('end.html', customer_id=customer_id)
 
 
