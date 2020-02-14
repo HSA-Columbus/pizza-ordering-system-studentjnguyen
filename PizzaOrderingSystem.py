@@ -41,7 +41,7 @@ def home():
                 data_list.append(customer_id)
                 conn.execute(command, data_list)
                 conn.commit()
-            if request.form['submit_button'] == 'Add Napoliten':
+            if request.form['submit_button'] == 'Add Neapolitan':
                 data_list.append('Neapolitan')
                 data_list.append(11.99)
                 data_list.append(customer_id)
