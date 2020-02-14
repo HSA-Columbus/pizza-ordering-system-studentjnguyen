@@ -122,9 +122,6 @@ def cart():
 
 @application.route('/orderplaced', methods=['GET', 'POST'])
 def orderplaced():
-    # if request.method == "POST":
-    #     if request.form['print'] == 'Send Receipt':
-    #
     return render_template('end.html', customer_id=customer_id)
 
 
