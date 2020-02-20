@@ -1,7 +1,68 @@
 from flask import *
 import sqlite3
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 import random
-import pdfkit
+import datetime
+
+
+def contact_customer(list, customerid, total_price):
+    email = "imnotarobotlol1234@gmail.com"
+    password = "imnotarobot"
+    send_to_email = "imnotarobotlol1234@gmail.com"
+    subject = 'Thank you for ordering! Your Customer ID: {}'.format(customerid)
+    string = ""
+    date = datetime.datetime.today()
+    for i in list:
+        string += """<tr style="color: black">"""
+        for x in i:
+            string += """<th style="color: black; border: 2px solid black; text-align: center; padding: 8px;">""" + str(x) + "</th>"
+        string += "</tr>"
+    table = """<table style="border-collapse: collapse; width: 100%">
+    <tr style="color: black">
+        <th style="color: black; border: 2px solid black; text-align: center; padding: 8px;">Items</th>
+        <th style="color: black; border: 2px solid black; text-align: center; padding: 8px;">Total Prices</th>
+        <th style="color: black; border: 2px solid black; text-align: center; padding: 8px;">Customer ID</th>
+    </tr>
+    {}
+    <tr style="color: black">
+        <th style="color: black; border: 2px solid black; text-align: center; padding: 8px;">Delivery Charge</th>
+        <th style="color: black; border: 2px solid black; text-align: center; padding: 8px;">2.00</th>
+        <th style="color: black; border: 2px solid black; text-align: center; padding: 8px;">{}</th>
+    </tr>
+    <tr style="color: black">
+        <th style="color: black; border: 2px solid black; text-align: center; padding: 8px;">Total Price:</th>
+        <th style="color: black; border: 2px solid black; text-align: center; padding: 8px;">{}</th>
+    </tr>
+</table>""".format(string, customerid, total_price)
+    message = """<html>
+    <head></head>
+    <body>
+    <h3 style="color: black">Date: {}</h3>
+    <h3 style="color: black">Your Receipt:</h3>
+    {}
+    <br>
+    <h4 style="color: black">Approximate Delivery Time: 30-60 min</h4>
+    </body>
+    </html>""".format(date, table)
+
+    msg = MIMEMultipart()
+    msg['From'] = email
+    msg['To'] = send_to_email
+    msg['Subject'] = subject
+
+    msg.attach(MIMEText(message, 'html'))
+    try:
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+        server.login(email, password)
+        text = msg.as_string()
+        server.sendmail(email, send_to_email, text)
+        server.quit()
+        return 1
+    except:
+        return render_template('404.html')
 
 
 application = Flask(__name__)
@@ -122,7 +183,30 @@ def cart():
 
 @application.route('/orderplaced', methods=['GET', 'POST'])
 def orderplaced():
-    return render_template('end.html', customer_id=customer_id)
+    if request.method == "POST":
+        with sqlite3.connect("Order2") as conn:
+            command1 = "SELECT * FROM orders where customerID = " + str(customer_id)
+            cursor1 = conn.execute(command1)
+            orders_made = cursor1.fetchall()
+            total = 0
+            for items in orders_made:
+                total = total+items[1]
+                totals = round(total, 2)
+                print(totals)
+                totals += 2.00
+                total_price1 = totals
+        result = contact_customer(orders_made, customer_id, total_price1)
+        if result == 1:
+            return render_template('orderplaced.html', customer_id=customer_id, result="Your order has been placed!", customer_message="Your Customer ID is: ")
+        elif result == 0:
+            return render_template('orderplaced.html', customer_id=customer_id, result="There was an error, please reorder.")
+    else:
+        return render_template('end.html')
+
+
+@application.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 
 if __name__ == "__main__":
