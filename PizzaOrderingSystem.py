@@ -82,7 +82,7 @@ def home():
                 conn.commit()
     if request.method == "POST":
         with sqlite3.connect("Order2") as conn:
-            command = "INSERT INTO orders VALUES (?, ?, ?)"
+            command = "INSERT INTO orders VALUES (?, ?, ?, ?)"
             data_list = []
             if request.form['submit_button'] == 'Add Sicilian':
                 data_list.append('Sicilian')
@@ -161,6 +161,12 @@ def home():
 
 @application.route('/cart', methods=['GET', 'POST'])
 def cart():
+    if request.method == "POST":
+        with sqlite3.connect("Order2") as conn:
+            command3 = "DELETE FROM orders where customerID = " + str(customer_id)
+            conn.execute(command3)
+            conn.commit()
+        return render_template('home.html')
     try:
         with sqlite3.connect("Order2") as conn:
             command1 = "SELECT * FROM orders where customerID = " + str(customer_id)
@@ -183,25 +189,29 @@ def cart():
 
 @application.route('/orderplaced', methods=['GET', 'POST'])
 def orderplaced():
+    with sqlite3.connect("Order2") as conn:
+        command1 = "SELECT * FROM orders where customerID = " + str(customer_id)
+        cursor1 = conn.execute(command1)
+        orders_made = cursor1.fetchall()
+        total = 0
+        for items in orders_made:
+            total = total + items[1]
+            totals = round(total, 2)
+            print(totals)
+            totals += 2.00
+            total_price1 = totals
     if request.method == "POST":
-        with sqlite3.connect("Order2") as conn:
-            command1 = "SELECT * FROM orders where customerID = " + str(customer_id)
-            cursor1 = conn.execute(command1)
-            orders_made = cursor1.fetchall()
-            total = 0
-            for items in orders_made:
-                total = total+items[1]
-                totals = round(total, 2)
-                print(totals)
-                totals += 2.00
-                total_price1 = totals
         result = contact_customer(orders_made, customer_id, total_price1)
         if result == 1:
+            with sqlite3.connect("Order2") as conn:
+                command3 = "DELETE FROM orders where customerID = " + str(customer_id)
+                conn.execute(command3)
+                conn.commit()
             return render_template('orderplaced.html', customer_id=customer_id, result="Your order has been placed!", customer_message="Your Customer ID is: ")
         elif result == 0:
             return render_template('orderplaced.html', customer_id=customer_id, result="There was an error, please reorder.")
     else:
-        return render_template('end.html')
+        return render_template('end.html', orders_made=orders_made, total_price1=total_price1, customer_id=customer_id)
 
 
 @application.errorhandler(404)
