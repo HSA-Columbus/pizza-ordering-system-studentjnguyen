@@ -80,6 +80,7 @@ def home():
                 address_list.append(customer_id)
                 conn.execute(command1, address_list)
                 conn.commit()
+        return render_template('home.html')
     if request.method == "POST":
         with sqlite3.connect("Order2") as conn:
             command = "INSERT INTO orders VALUES (?, ?, ?)"
@@ -156,6 +157,7 @@ def home():
                 data_list.append(customer_id)
                 conn.execute(command, data_list)
                 conn.commit()
+        return render_template('home.html')
     return render_template('home.html')
 
 
