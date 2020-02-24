@@ -106,7 +106,7 @@ def home():
                 data_list.append('Neapolitan')
                 data_list.append(11.99)
                 data_list.append(customer_id)
-                conn.execute(command, data_list)
+                conn.echazchxecute(command, data_list)
                 conn.commit()
             if request.form['submit_button'] == 'Add Hot Dog':
                 data_list.append('Hot Dog')
@@ -222,4 +222,4 @@ def page_not_found(e):
 if __name__ == "__main__":
     tyler = random.randint(1, 100000)
     customer_id = tyler
-    application.run(debug=True)
+    application.run()
