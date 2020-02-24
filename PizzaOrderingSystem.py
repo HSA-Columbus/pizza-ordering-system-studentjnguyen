@@ -82,7 +82,7 @@ def home():
                 conn.commit()
     if request.method == "POST":
         with sqlite3.connect("Order2") as conn:
-            command = "INSERT INTO orders VALUES (?, ?, ?, ?)"
+            command = "INSERT INTO orders VALUES (?, ?, ?)"
             data_list = []
             if request.form['submit_button'] == 'Add Sicilian':
                 data_list.append('Sicilian')
