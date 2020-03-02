@@ -5,6 +5,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import random
 import datetime
+import boto3
 
 
 def contact_customer(list, customerid, total_price):
@@ -72,15 +73,16 @@ application = Flask(__name__)
 def home():
     if request.method == "POST":
         with sqlite3.connect("Order2") as conn:
-            command1 = "INSERT INTO address VALUES (?, ?, ?)"
+            command1 = "INSERT INTO address VALUES (?, ?, ?, ?)"
             address_list = []
             if request.form['submit_button'] == 'Submit':
                 address_list.append(request.form['name'])
                 address_list.append(request.form['address'])
+                address_list.append(request.form['phone'])
                 address_list.append(customer_id)
                 conn.execute(command1, address_list)
                 conn.commit()
-        return render_template('home.html')
+                return render_template('home.html')
     if request.method == "POST":
         with sqlite3.connect("Order2") as conn:
             command = "INSERT INTO orders VALUES (?, ?, ?)"
@@ -157,7 +159,7 @@ def home():
                 data_list.append(customer_id)
                 conn.execute(command, data_list)
                 conn.commit()
-        return render_template('home.html')
+            return render_template('home.html')
     return render_template('home.html')
 
 
@@ -205,6 +207,18 @@ def orderplaced():
     if request.method == "POST":
         result = contact_customer(orders_made, customer_id, total_price1)
         if result == 1:
+            client = boto3.client(
+                "sns",
+                aws_access_key_id="ASIAWUAF4F6SH3ATK4XE",
+                aws_secret_access_key="RFJ05j2wrVAI9sBcGXWUFAlRJ8zHsmXC+nVTn8Cw",
+                aws_session_token="FwoGZXIvYXdzECAaDKsgQxwQcy6yqPlC7CLTAZcLFE6KJ2FAroX5ZA+WqWHdL9nXST74I3V1fphtqNfmzXRhW59PlqbbGL+largIUn0bly/FxwXIaotoSx1FKeDCx+7+eiPq3LYvtfA/NSgXC0I1ilYHp4bW3UsF0aXnQmaKGkyK/qfmvhWkkbmJAyjzu8q95zDtCfQRGk4ua199xmv2mxzmN7VniPHImp8PoWKSpLQ0A5crteJaQNLYb+RQsv3m6sKbQWRn8Hg350KiC3RJvxje64dkdXv/hN+GrSw0Kgp0mIEL81CimaSqj5pP4uwogb7k8gUyLQ4b0JDxZqUBqjon+Pme81jkXO/XJiGoAKXyAn2Xbi5w4bq0sstUrtSFyLCXXg==",
+                region_name="us-east-1"
+            )
+
+            client.publish(
+                PhoneNumber="16142865517",
+                Message="Thank you for ordering! Your customer id: 1337 Approximate Delivery Time: 30-60 minutes"
+            )
             with sqlite3.connect("Order2") as conn:
                 command3 = "DELETE FROM orders where customerID = " + str(customer_id)
                 conn.execute(command3)
@@ -224,4 +238,4 @@ def page_not_found(e):
 if __name__ == "__main__":
     tyler = random.randint(1, 100000)
     customer_id = tyler
-    application.run()
+    application.run(debug=True)
