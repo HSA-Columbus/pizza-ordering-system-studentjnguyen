@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Mikes Pizza</title>
+</head>
+<body>
+
+    <img src="../static/pizzabanner.jpg" alt="PizzaFire" class="banner">
+<div>
+    <h1 style="text-align: center" class="text">Pizza Ordering System</h1>
+</div><br>
+    <div>
+        <button style="width: 100%; height: 50px"><a href="/cart">View Your Cart</a></button>
+    </div><br>
+<div>
+        <form class="text" action="/" method="post">
+            <div>
+            <h2>Enter your information: </h2>
+        Name and Surname: <label class="pizza">
+        <input name="name" type="text" required>
+    </label><br>
+        Address: <label class="pizza">
+        <input name="address" type="text" required>
+    </label><br>
+                Phone Number: <label class="pizza">
+                <input name="phone" type="text" required>
+            </label><br>
+            <input name="submit_button" type="submit" value="Submit">
+            </div>
+            </form>
+    <form class="text" action="/" method="post">
+        <input type="hidden" value="" id="pizza_type">
+            <h2>Pizzas: </h2>
+        <div>
+            <img src="../static/Sicilian.jpg" alt="Sicilian" align="center">
+            Sicilian 11.99$<label class="pizza">
+            <input name="submit_button" type="submit" value="Add Sicilian" style="background-color:red;color:white;">
+        </label>
+            <br clear="left"/>
+            <p>Cooked delicately in our Authentic Pizza-Fire Oven, topped with onions, anchovies, tomatoes, herbs, and a mix of caciocavallo and toma cheese!</p>
+        </div><br>
+        <div>
+            <img src="../static/Marine.jpg" alt="Marine" align="center">
+            Marine 11.99$<label class="pizza">
+        <input name="submit_button" type="submit" value="Add Marine" style="background-color:red;color:white;">
+    </label>
+            <br clear="left"/>
+            <p>Cooked precisely in our Authentic Pizza-Fire Oven, topped with banana peppers, peperoni, toma cheese, and black olives!</p>
+        </div><br>
+        <div>
+            <img src="../static/Mixed.jpg" alt="Mixed" align="center">
+            Mixed 11.99$<label class="pizza">
+        <input name="submit_button" type="submit" value="Add Mixed" style="background-color:red;color:white;">
+    </label>
+            <br clear="left"/>
+            <p>Random ingredients we throw on the pizza!</p>
+        </div><br>
+        <div>
+            <img src="../static/Napoliten.jpg" alt="Napoliten" align="center">
+            Neapolitan 11.99$<label class="pizza">
+        <input name="submit_button" type="submit" value="Add Neapolitan" style="background-color:red;color:white;">
+    </label>
+            <br clear="left"/>
+            <p>Our best dough with raw tomatoes, fresh mozzarella cheese, fresh basil, and a dash of olive oil! Of course we put it inside our Authentic Pizza-Fire Oven! HINOKAMI KAGURA!</p>
+        </div>
+        <h2>Additional Toppings: </h2>
+            <p>(1.00$ for each additional topping)</p>
+        <div>
+        Green Pepper <label class="toppings">
+            <input name="submit_button" value="Add Green Pepper" type="submit" style="background-color:red;color:white;">
+        </label>
+            <br/>
+        Tomato <label class="toppings">
+            <input name="submit_button" value="Add Tomato" type="submit" style="background-color:red;color:white;">
+        </label>
+            <br clear="left"/>
+        Banana Peppers <label class="toppings">
+            <input name="submit_button" value="Add Banana Pepper" type="submit" style="background-color:red;color:white;">
+        </label>
+            <br clear="left"/>
+        Mushroom <label class="toppings">
+            <input name="submit_button" value="Add Mushroom" type="submit" style="background-color:red;color:white;">
+        </label>
+            <br clear="left"/>
+        Olive <label class="toppings">
+            <input name="submit_button" value="Add Olive" type="submit" style="background-color:red;color:white;">
+        </label>
+        </div>
+            <h2>Specials: </h2>
+        <div>
+            <img src="../static/HotDog.jpg" alt="HotDog" align="center">
+            Hot Dog 4.99$<label class="specials">
+            <input name="submit_button" type="submit" value="Add Hot Dog" style="background-color:red;color:white;">
+        </label>
+            <br clear="left"/>
+            <p>A 1/2 pound, all beef hot dog, with a 12" bun to go along, then cooked crisply in our Authentic Pizza-Fire Oven!</p>
+        </div><br>
+        <div>
+            <img src="../static/meatballsub.jpg" alt="MeatballDog" align="center">
+        Meatball Dog 5.99$<label class="specials">
+            <input name="submit_button" type="submit" value="Add Meatball Dog" style="background-color:red;color:white;">
+        </label>
+            <br clear="left"/>
+            <p>Fresh meatballs hatched from Authentic Pizza-Fire Chickens, with mozzarella cheese, and cooked to the T in our Authentic Pizza-Fire Oven!</p>
+        </div><br>
+        <div>
+            <img src="../static/waterdog.png" alt="WaterDog" align="center">
+            Water Dog 0.99$<label class="specials">
+            <input name="submit_button" type="submit" value="Add Water Dog" style="background-color:red;color:white;">
+        </label>
+            <br clear="left"/>
+            <p>Our freshly hatched water, contained inside our fresh 12" hot dog bun, and thrown inside our Authentic Pizza-Fire Oven!</p>
+        </div><br>
+
+</form>
+</div>
+
+</body>
+</html>

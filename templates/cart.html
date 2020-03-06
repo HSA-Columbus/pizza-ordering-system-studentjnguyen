@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Mikes Pizza</title>
+        <style>
+    table {
+        border-collapse: collapse;
+        width: 100%
+    }
+        td, th{
+            border: 2px solid white;
+            text-align: center;
+            padding: 8px;
+        }
+    tr:nth-child(even){
+        background-color: whitesmoke;
+    }
+            tr:nth-child(odd){
+                background-color: ghostwhite;
+            }
+</style>
+</head>
+<body>
+<img src="../static/pizzabanner.jpg" alt="PizzaFire" class="banner">
+    <div>
+    <h1 style="text-align: center" class="text">Your Cart</h1>
+
+</div><br>
+<div>
+<button style="width: 100%; height: 50px; color: red"><a href="/">Back to our menu</a></button>
+</div><br>
+<div>
+<h2 class="text">
+    Your Information:
+</h2>
+<h3 class="text">
+    Name: {{address_made[0][0]}}
+</h3>
+<h3 class="text">
+    Address: {{address_made[0][1]}}
+</h3>
+<table>
+    <tr style="color: black">
+        <th style="color: black">Items</th>
+        <th>Total Prices</th>
+        <th>Customer ID</th>
+    </tr>
+    {%for i in orders_made%}
+    <tr style="color: black">
+        {% for x in i %}
+        <th style="color: black">{{x}}</th>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    <tr>
+        <th style="color: black">Delivery Charge</th>
+        <th style="color: black">2.00</th>
+        <th style="color: black">{{customer_id}}</th>
+    </tr>
+    <tr>
+        <th style="color: black">Total Price:</th>
+        <th style="color: black">$ {{total_price1}}</th>
+    </tr>
+</table>
+<br>
+<label class="text">
+    RECEIVE MY ORDER ASAP: <input type="checkbox" required>
+</label>
+</div><br>
+    <div>
+    <form action="/cart" method="post">
+        <input type="submit" name="print" value="Delete Order" style="width: 100%; height: 50px; color: red">
+    </form>
+</div>
+<br>
+<div>
+<button style="width: 100%; height: 50px; color: red"><a href="/orderplaced">Place order</a></button>
+</div><br>
+</body>
+</html>
