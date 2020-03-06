@@ -209,9 +209,9 @@ def orderplaced():
         if result == 1:
             client = boto3.client(
                 "sns",
-                aws_access_key_id="ASIAWUAF4F6SH3ATK4XE",
-                aws_secret_access_key="RFJ05j2wrVAI9sBcGXWUFAlRJ8zHsmXC+nVTn8Cw",
-                aws_session_token="FwoGZXIvYXdzECAaDKsgQxwQcy6yqPlC7CLTAZcLFE6KJ2FAroX5ZA+WqWHdL9nXST74I3V1fphtqNfmzXRhW59PlqbbGL+largIUn0bly/FxwXIaotoSx1FKeDCx+7+eiPq3LYvtfA/NSgXC0I1ilYHp4bW3UsF0aXnQmaKGkyK/qfmvhWkkbmJAyjzu8q95zDtCfQRGk4ua199xmv2mxzmN7VniPHImp8PoWKSpLQ0A5crteJaQNLYb+RQsv3m6sKbQWRn8Hg350KiC3RJvxje64dkdXv/hN+GrSw0Kgp0mIEL81CimaSqj5pP4uwogb7k8gUyLQ4b0JDxZqUBqjon+Pme81jkXO/XJiGoAKXyAn2Xbi5w4bq0sstUrtSFyLCXXg==",
+                aws_access_key_id="ASIAWUAF4F6SASBBECN3",
+                aws_secret_access_key="fZm06l1tsHGhG3/WFTUrZ65aeCWneIVLIj6TpI4Y",
+                aws_session_token="FwoGZXIvYXdzEMb//////////wEaDMFq/y0Iw9TDnNsuryLTAfoAS6SqRjAvBsmFRUWys8HBtIq1pF/u6hbhTAU+qRalkybCeVmjM8diVb7FrAfO/5fAR/V20vi5+WKxOq0+Gx5OpIeWPR3CJTCsqdv2ebFlS2SqAi+1gc58cvIJei6SgG18GR8c7019eCwtUtjrqsenATHG1wts10U4RT2aglNd2LXJgd1jHE6HhV6sFDuQCeNmlYM612mEca4bkTi0ai8aOWiAjjZgQYPL+Gg6bKyj83ouufpBw9bkQTGYkotOjznoo+qHR388AN8Mku3naqwzyVgo7YqJ8wUyLV9qk+cqFm/z8IKxBnPgDrrKxy+VrBTwf6Gab3VOsUTUQ0OlvcKtwlHdOCDKIw==",
                 region_name="us-east-1"
             )
 
